@@ -25,7 +25,7 @@
     </div>
     <div id="buttons">
         <button id="clearButton">Make A New Art Piece</button>
-        <button id="deleteRowButton">Delete Last Row</button>
+        <button id="deleteRowButton">Delete Row</button>
     </div>
     <!-- ------------------- -->
 
@@ -41,6 +41,26 @@
     </table>
 
     <!-- ------------------- -->
+
+    <div id="instructions">
+        <h3>Instructions ▽</h3>
+        <p id='hide' className='inst'>
+            Each row has 50 squares that you can color, to add an additional row you can press the 'Add a row' button.
+            <br/>
+            <br/>
+            You can select which color you want to use by looking through the colors and pressing which one you want.
+            <br/>
+            <br/>
+            To delete a row you can press the 'Delete Row' button and the last row will be delete along with any colors that were on that row.
+            <br/>
+            <br/>
+            To make a new painting you can press the 'Make A New Art Piece' button and all the color will disappear from the squares but the number of rows will remain.
+            <br/>
+            <br/>
+            <br/>
+            When you're done don't forget to take a screenshot of your Art Piece! 📸
+        </p>
+    </div>
 </body>
 
 <script>   
@@ -49,6 +69,8 @@
     const selector = document.querySelector('select');
     const clearButton = document.querySelector('#clearButton');
     const deleteButton = document.querySelector('#deleteRowButton');
+    const dropDown = document.querySelector('#hide');
+    const h3 = document.querySelector('h3');
 
     function addRow() {
         const tr = document.createElement('tr');
@@ -86,6 +108,16 @@
         const allTrs = table.deleteRow(allTrsLength - 1);
     });
 
+    h3.addEventListener('click', (ev) => {
+        if(dropDown.id === 'hide') {
+            dropDown.id = 'show';
+            ev.target = 'Instructions -';
+        }
+        else {
+            dropDown.id = 'hide';
+            ev.target = 'Instructions +';
+        }
+    });
 </script>
 
 </html>

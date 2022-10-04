@@ -44,3 +44,15 @@ td {
 #option {
     padding: 5px;
 }
+
+#hide {
+    display: none;
+}
+
+#show {
+    display: block;
+}
+
+#instructions {
+    padding: 5px 175px;
+}
