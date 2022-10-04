@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Art</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h1 id="head">Pixel Art</h1>
+    <h6 id="head">By Shanntal Morel</h6>
+
+    <div id="options">
+        <div id="option">
+            <button id="add-row">Add a row</button>
+        </div>
+        <div id="option">
+            <select>
+                <option value="white">white</option>
+                <option value="black">black</option>
+                <option value="chocolate">chocolate</option>
+            </select>
+        </div>
+    </div>
+    <div id="buttons">
+        <button id="clearButton">Make A New Art Piece</button>
+        <button id="deleteRowButton">Delete Last Row</button>
+    </div>
+    <!-- ------------------- -->
+
+    <table>
+        <tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+    </table>
+
+    <!-- ------------------- -->
+</body>
+
+<script>   
+    const table = document.querySelector('table');
+    const addButton = document.querySelector('#add-row');
+    const selector = document.querySelector('select');
+    const clearButton = document.querySelector('#clearButton');
+    const deleteButton = document.querySelector('#deleteRowButton');
+
+    function addRow() {
+        const tr = document.createElement('tr');
+        while (tr.children.length < 60) {
+            tr.appendChild(document.createElement('td'));
+        }
+        table.appendChild(tr);
+    }
+
+    addButton.addEventListener('click', (ev) => {
+        addRow();
+    });
+
+    table.addEventListener('click', (ev) => {
+        let target = ev.target
+        let currentColor = target.style.backgroundColor;
+
+        if(target.tagName === 'TD') {
+            if(currentColor === selector.value) {
+            target.style.backgroundColor = '';
+            }
+            else {
+                target.style.backgroundColor = selector.value;
+            }
+        }
+    });
+
+    clearButton.addEventListener('click', (ev) => {
+        const allTds = document.querySelectorAll('td');
+        allTds.forEach(td => td.style.backgroundColor = '');
+    });
+
+    deleteButton.addEventListener('click', (ev) => {
+        const allTrsLength = [...document.querySelectorAll('tr')].length;
+        const allTrs = table.deleteRow(allTrsLength - 1);
+    });
+
+</script>
+
+</html>
