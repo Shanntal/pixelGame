@@ -1,17 +1,19 @@
 * {
     background-color: rgb(110, 88, 62);
     color: white;
+    font-family: 'Silkscreen';
 }
 
 table {
     border: 15px ridge tan;
     padding: 5px;
-    margin: 15px auto;
+    margin: 40px auto;
 }
 
 #head {
     display: flex;
     justify-content: center;
+    padding-top: 10px;
 }
 
 #buttons {
@@ -26,7 +28,8 @@ table {
     color: black;
     border-radius: 40% 4%;
     height: 1.7rem;
-    width: 5rem;
+    width: 7rem;
+    cursor: pointer;
 }
 
 td {
@@ -42,7 +45,7 @@ td {
 }
 
 #option {
-    padding: 5px;
+    padding: 10px;
 }
 
 #hide {
@@ -54,5 +57,19 @@ td {
 }
 
 #instructions {
-    padding: 5px 175px;
+    padding: 0px 175px;
+    font-family: sans-serif;
+}
+
+#clearButton {
+    cursor: pointer;
+}
+
+#deleteRowButton {
+    cursor: pointer;
+}
+
+h3 {
+    width: 12rem;
+    cursor: context-menu;
 }

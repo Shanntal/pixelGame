@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixel Art</title>
+    <link href="https://fonts.googleapis.com/css?family=Silkscreen" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -20,6 +21,13 @@
                 <option value="white">white</option>
                 <option value="black">black</option>
                 <option value="chocolate">chocolate</option>
+                <option value="red">red</option>
+                <option value="pink">pink</option>
+                <option value="yellow">yellow</option>
+                <option value="orange">orange</option>
+                <option value="blue">blue</option>
+                <option value="green">green</option>
+                <option value="purple">purple</option>
             </select>
         </div>
     </div>
@@ -44,14 +52,17 @@
 
     <div id="instructions">
         <h3>Instructions ▽</h3>
-        <p id='hide' className='inst'>
+        <p id='hide' className='inst' style="font-family:sans-serif">
             Each row has 50 squares that you can color, to add an additional row you can press the 'Add a row' button.
             <br/>
             <br/>
             You can select which color you want to use by looking through the colors and pressing which one you want.
             <br/>
             <br/>
-            To delete a row you can press the 'Delete Row' button and the last row will be delete along with any colors that were on that row.
+            To get a colored square back to the original background color you must click on that square with the color options set to the original color the square is colored.
+            <br/>
+            <br/>
+            To delete a row you can press the 'Delete Row' button and the last row will be deleted along with any colors that were on that row. The only row that will not deleted is the first one.
             <br/>
             <br/>
             To make a new painting you can press the 'Make A New Art Piece' button and all the color will disappear from the squares but the number of rows will remain.
@@ -105,7 +116,9 @@
 
     deleteButton.addEventListener('click', (ev) => {
         const allTrsLength = [...document.querySelectorAll('tr')].length;
-        const allTrs = table.deleteRow(allTrsLength - 1);
+        if ([...document.querySelectorAll('tr')][1]) {
+            const allTrs = table.deleteRow(allTrsLength - 1);
+        }
     });
 
     h3.addEventListener('click', (ev) => {
